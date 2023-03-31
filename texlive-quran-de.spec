@@ -1,6 +1,6 @@
 Name:		texlive-quran-de
 Version:	54191
-Release:	1
+Release:	2
 Summary:	German translations to the quran package
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/quran-de
