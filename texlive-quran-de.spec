@@ -1,37 +1,21 @@
-Name:		texlive-quran-de
-Version:	54191
-Release:	2
+%global tl_name quran-de
+%global tl_revision 74874
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.21
+Release:	%{tl_revision}.1
 Summary:	German translations to the quran package
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/quran-de
+URL:		https://www.ctan.org/tex-archive/macros/unicodetex/latex/quran-de
 License:	lppl1.3c
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/quran-de.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/quran-de.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/quran-de.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/quran-de.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package is prepared for typesetting some German
-translations of the Holy Quran. It adds three more German
-translations to the quran package.
+The package is prepared for typesetting some German translations of the
+Holy Quran. It adds three more German translations to the quran package.
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/xelatex/quran-de
-%doc %{_texmfdistdir}/doc/xelatex/quran-de
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
